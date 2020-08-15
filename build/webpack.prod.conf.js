@@ -1,7 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
-const webpack = require('webacpack')
+const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -137,7 +137,7 @@ if (config.build.bundleAnalyzerReport) {
 	webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 webpackConfig.plugins.push(new PrerenderSPAPlugin({
-  staticDir: path.join(__dirname, 'dist'),
+  staticDir: path.join(__dirname, '../dist'),
   routes: [ '/', '/about' ]
 }))
 module.exports = webpackConfig
