@@ -33,6 +33,11 @@ var authRoutes = [
     path: '/test-demo',
     name: 'TestDemo',
     component: 'Example/TestDemo'
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: 'About'
   }
 ];
 

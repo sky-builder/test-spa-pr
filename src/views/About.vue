@@ -1,6 +1,6 @@
 <template>
   <div>
-    hello,{{name}}
+    hello,{{ name }}
   </div>
 </template>
 
@@ -9,9 +9,9 @@ export default {
   data() {
     return {
       name: 'alice'
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
