@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title v-text="title"></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="format-detection" content="email=no" />
+    <meta name="x5-fullscreen" content="true">
+    <meta name="360-fullscreen" content="true">
+    <% if(process.env.NODE_ENV === 'production') {%>
+    <!-- 如需添加监控，请向@程平申请 -->
+    <script src="//cdn-src.aiyunxiao.com/monitor/1.2,1/monitor.min.js">
+    </script>
+
+    <script>
+      if (window.newMonitor) {
+        // newMonitor.init({
+        //   id: 'xxxx'
+        // });
+      }
+    </script>
+    <% } %>
+    <script>
+      //mobile viewport hack
+      (function () {
+        function apply_viewport() {
+
+          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+
+            var ww = window.screen.width;
+            var mw = 1200; // min width of site
+            var ratio = ww / mw; //calculate ratio
+            // var viewport_meta_tag = document.getElementById('viewport');
+
+            var viewport_meta_tag = document.getElementById('viewport')
+              || document.getElementsByName('viewport')[0];
+
+            if (ww < mw) { //smaller than minimum size
+              viewport_meta_tag.setAttribute('content', 'initial-scale=' + ratio + ', maximum-scale=1' + ', minimum-scale=0' + ', user-scalable=yes, width=' + mw);
+            }
+            else { //regular size
+              viewport_meta_tag.setAttribute('content', 'initial-scale=1.0, maximum-scale=1, minimum-scale=1.0, user-scalable=yes, width=' + ww);
+            }
+          }
+        }
+
+        //ok, i need to update viewport scale if screen dimentions changed
+        window.addEventListener('resize', function () {
+          apply_viewport();
+        });
+
+        apply_viewport();
+      }());
+    </script>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//cdn-src.aiyunxiao.com/element-ui/2.4.3/theme-chalk/index.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
